@@ -1,0 +1,31 @@
+.list-box {
+  margin-bottom: 20px;
+}
+
+.list-box.yet {
+  position: relative;
+  width: 200px;
+  border: 1px solid red;
+  padding: 20px 60px 20px 20px;
+  line-height: 24px;
+  word-wrap: break-word; /* 단어가 너무 길면 다음 줄로 넘김 */
+}
+
+.list-box.done {
+  position: relative;
+  width: 200px;
+  border: 1px solid red;
+  padding: 20px 60px 20px 20px;
+  line-height: 24px;
+  background-color: #999;
+  word-wrap: break-word; /* 단어가 너무 길면 다음 줄로 넘김 */
+}
+
+.del-btn {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  /* bottom: 20px; */
+  right: 20px;
+}
+
