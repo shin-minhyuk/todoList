@@ -16,7 +16,8 @@ todoForm.addEventListener("submit", (e) => {
   todoForm.todo.value = ""         // 인풋 입력값 삭제
   todoArr.push(toBeAdded)          // 배열에 작성된 객체들 추가
 
-  localStorage.setItem("toBeAdded", JSON.stringify(todoArr)) // 로컬에 저장
+  // 로컬에 저장
+  setLocalStorage()
   // 할일이 추가될 때 마다 할일을 보여준다.
   displayTodos()
 })
@@ -74,6 +75,7 @@ function handleListClick(clickedId) { // 클릭아이디 값을 받아와서 함
     }
   })
   console.log(todoArr)
+  setLocalStorage()
   displayTodos()
 }
 // 간단하게 설명해서 재할당을 해야 true, false 값이 변경된다.
@@ -95,11 +97,15 @@ function handleDelBtnClick(clickedId) {
   displayTodos()
 }
 
-function getLocalStorageId () {
+function setLocalStorage () {
+  localStorage.setItem("toBeAdded", JSON.stringify(todoArr))
+}
+
+function getLocalStorage () {
   todoArr = JSON.parse(localStorage.getItem("toBeAdded"));
   displayTodos();
 }
-getLocalStorageId()
+getLocalStorage()
 
 
 /**
