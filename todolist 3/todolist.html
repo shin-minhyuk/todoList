@@ -4,8 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="todolist.css">
 </head>
 <body>
+  <div class="container">
+    <div>
+      <h1 class="title">Minhyuk Todo List</h1>
+    </div>
   
+    <div class="inp-box">
+      <input type="text" class="inp-text" placeholder="할 일을 입력해주세요">
+      <button class="inp-btn">추가</button>
+      <div>
+        <select class="inp-select">
+          <option value="전체">전체</option>
+          <option value="완료">완료</option>
+          <option value="미완료">미완료</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
