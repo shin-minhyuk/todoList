@@ -49,18 +49,24 @@ function displayTodos(todos) {
   todos.forEach((todo) => {
     const li = document.createElement("li")
     const span = document.createElement("span")
-    const div = document.createElement("div")
+    const btndiv = document.createElement("div")
     const btnDel = document.createElement("button")
     const btnCheck = document.createElement("button")
+    const listDiv = document.createElement("div")
+    const timeDiv = document.createElement("div")
 
     li.classList.add("todo-list-obj")
     span.textContent = todo.text
     btnCheck.textContent = "C"
     btnDel.textContent = "X"
+    timeDiv.textContent = elapsedText(todo.id);
 
-    li.append(span, div)
-    div.append(btnCheck, btnDel)
-    todoList.prepend(li)
+    timeDiv.classList.add("time")
+
+    listDiv.append(li, timeDiv)
+    li.append(span, btndiv)
+    btndiv.append(btnCheck, btnDel)
+    todoList.prepend(listDiv)
 
     btnCheck.addEventListener("click", () => {
       handleCheckBtn(todo.id)
@@ -140,3 +146,38 @@ inpSelect.addEventListener("change", () => {
 });
 
 window.addEventListener("load", getLocalStorage)
+
+
+// SNS처럼 글 작성 시간 표시 함수
+function elapsedText(date) {
+	// 초 (밀리초)
+	const seconds = 1;
+	// 분
+	const minute = seconds * 60;
+	// 시
+	const hour = minute * 60;
+	// 일
+	const day = hour * 24;
+	
+	var today = new Date().getTime();
+	var elapsedTime = Math.trunc((today - date) / 1000);
+	
+	var elapsedText = "";
+	if (elapsedTime < seconds) {
+		elapsedText = "방금 전";
+	} else if (elapsedTime < minute) {
+		elapsedText = elapsedTime + "초 전";
+	} else if (elapsedTime < hour) {
+		elapsedText = Math.trunc(elapsedTime / minute) + "분 전";
+	} else if (elapsedTime < day) {
+		elapsedText = Math.trunc(elapsedTime / hour) + "시간 전";
+	} else if (elapsedTime < (day * 15)) {
+		elapsedText = Math.trunc(elapsedTime / day) + "일 전";
+	} else {
+    elapsedText = date.toISOString().split('T')[0]; // 예시로 ISO 형식 날짜로 변환
+	}
+	
+	return elapsedText;
+}
+
+setInterval(displayOption, 60000) // 1분마다 업데이트
