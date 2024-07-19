@@ -27,22 +27,112 @@ html, body{
 .inp-box {
   display: flex;
   align-items: center;
+  width: 480px;
 }
 
-.inp-box > .inp-text {
-  width: 20rem;
+.inp-box-text {
+  position: relative;
+  margin-right: 0.5rem;
+  flex: 1;
+}
+
+.inp-box-text > .inp-text {
+  width: 100%;
   height: 3rem;
   font-size: 1.25rem;
+  padding-right: 50px;
+  padding-left: 10px;
+  border: none;
 }
 
-.inp-box > .inp-btn {
+.inp-box-text > .inp-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  width: 36px;
+  height: 36px;
+
   margin-right: 0.5rem;
-  width: 3rem;
-  height: 3rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  color: white;
+  background-color: #C963BF;
+  border: none;
 }
 
 .inp-box > div > .inp-select {
   width: 5rem;
   height: 2.5rem;
   color: #7951C8;
+  border: none;
+}
+
+.todo-container {
+  margin-top: 30px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* ----- [할일 미완료 상태] ----- */
+.todo-list-obj.yet{
+  display: flex;
+  align-items: center;
+  width: 480px;
+  height: 50px;
+  background-color: #fff;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.todo-list-obj.yet > span {
+  flex: 1;
+  padding-left: 10px;
+  font-size: 1.25rem;
+}
+/* ----- [할일 미완료 상태] ----- */
+
+/* ----- [할일 완료 상태] ----- */
+.todo-list-obj.done{
+  display: flex;
+  align-items: center;
+  width: 460px;
+  height: 50px;
+  background-color: #fff;
+  opacity: 0.5;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.todo-list-obj.done > span {
+  flex: 1;
+  padding-left: 10px;
+  font-size: 1.25rem;
+  text-decoration: line-through;
+}
+/* ----- [할일 완료 상태] ----- */
+
+.todo-list-obj > div > button {
+  border: none;
+  margin-right: 4px;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.todo-list-obj > div > button:nth-child(1) {
+  background-color: #32B354;
+}
+
+.todo-list-obj > div > button:nth-child(2) {
+  background-color: #FC4D1D;
 }
