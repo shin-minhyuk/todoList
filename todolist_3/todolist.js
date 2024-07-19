@@ -14,8 +14,6 @@ const inpBtn = document.querySelector(".inp-btn")
 
 let todoArr = [];
 
-// 엔터키를 눌렀을 때, inpBtn을 클릭하는 이벤트.
-
 function handleAddTodo() {
   console.log('버튼눌림')
   if (inpText.value.trim() === "") {
@@ -35,9 +33,8 @@ function handleAddTodo() {
   setLocalStorage()
 }
 
-
-// 할일 생성하기
-inpBtn.addEventListener("click", () => {
+inpBtn.addEventListener("click", (e) => {
+  e.preventDefault()
   handleAddTodo()
 })
 
