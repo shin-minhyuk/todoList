@@ -15,17 +15,12 @@ const inpBtn = document.querySelector(".inp-btn")
 let todoArr = [];
 
 // 엔터키를 눌렀을 때, inpBtn을 클릭하는 이벤트.
-inpText.addEventListener("keyup", (event) => {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    inpBtn.click();
-  }
-})
 
-// 할일 생성하기
-inpBtn.addEventListener("click", () => {
-  if (inpText.value === "") {
+function handleAddTodo() {
+  console.log('버튼눌림')
+  if (inpText.value.trim() === "") {
     return alert("내용을 작성해주세요.")
+    
   }
 
   const todoItem = {
@@ -36,9 +31,14 @@ inpBtn.addEventListener("click", () => {
 
   todoArr.push(todoItem)
   inpText.value = ''
-  console.log(todoArr)
   displayTodos(todoArr)
   setLocalStorage()
+}
+
+
+// 할일 생성하기
+inpBtn.addEventListener("click", () => {
+  handleAddTodo()
 })
 
 
@@ -143,6 +143,3 @@ inpSelect.addEventListener("change", () => {
 });
 
 window.addEventListener("load", getLocalStorage)
-
-
-
