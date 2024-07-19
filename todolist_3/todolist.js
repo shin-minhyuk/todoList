@@ -14,6 +14,14 @@ const inpBtn = document.querySelector(".inp-btn")
 
 let todoArr = [];
 
+// 엔터키를 눌렀을 때, inpBtn을 클릭하는 이벤트.
+inpText.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    inpBtn.click();
+  }
+})
+
 // 할일 생성하기
 inpBtn.addEventListener("click", () => {
   if (inpText.value === "") {
@@ -29,18 +37,19 @@ inpBtn.addEventListener("click", () => {
   todoArr.push(todoItem)
   inpText.value = ''
   console.log(todoArr)
-  displayTodos()
+  displayTodos(todoArr)
   setLocalStorage()
 })
+
 
 // 렌더링 함수만들기 실패
 // 문제 : displayTodos 함수는 배열을 돌면서 각 객체의 값을 이용해서
 // 생성한 돔 태그들에 값을 넣어주는 형식, 하지만? 배열을 순회하는 부분들을
 // 생각하지 못했음. 그래서 문제가 생겼던 것
-function displayTodos() {
+function displayTodos(todos) {
   todoList.innerHTML = ""
-  // li 생성
-  todoArr.forEach((todo) => {
+
+  todos.forEach((todo) => {
     const li = document.createElement("li")
     const span = document.createElement("span")
     const div = document.createElement("div")
@@ -82,7 +91,7 @@ function handleCheckBtn(clickedId) {
     }
     return todo
   })
-  displayTodos()
+  displayTodos(todoArr)
   setLocalStorage()
 }
 
@@ -93,7 +102,7 @@ function handleDelBtn(clickedId) {
     return todo.id !== clickedId
   })
   console.log(todoArr)
-  displayTodos()
+  displayTodos(todoArr)
   setLocalStorage()
 }
 
@@ -102,28 +111,38 @@ function setLocalStorage() {
 }
 
 function getLocalStorage() {
-  todoArr = JSON.parse(localStorage.getItem("투두리스트"))
-  displayTodos()
+  let getTodos = localStorage.getItem("투두리스트")
+  if(getTodos) {
+    todoArr = JSON.parse(getTodos);
+  } else {
+    todoArr = [];
+  }
+  displayTodos(todoArr)
 }
 
-window.addEventListener("load", getLocalStorage)
 
 const inpSelect = document.querySelector(".inp-select")
 
-inpSelect.addEventListener("change", (event) => {
-  let option = event.target.value
-  if (option === '전체') {
-    return
-  } else if (option === '완료') {
-    todoArr.forEach((todo) => {
-    if (todo.todoDone === false) {
-      todo.style.display = 'none'
-      // display: none;
-    }
-    })
-  
-  } else if (option === '미완료') {
-    
+function displayOption() {
+  let filter = inpSelect.value
+  let filteredTodos = todoArr
+
+  if (filter === '전체') {
+    filteredTodos = todoArr
+  } else if (filter === '완료') {
+    filteredTodos = todoArr.filter((todo) => { return todo.todoDone })
+  } else if (filter === '미완료') {
+    filteredTodos = todoArr.filter((todo) => { return !todo.todoDone })
   }
-  displayTodos()
-})
+
+  displayTodos(filteredTodos)
+}
+
+inpSelect.addEventListener("change", () => {
+  displayOption();
+});
+
+window.addEventListener("load", getLocalStorage)
+
+
+
