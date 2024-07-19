@@ -5,7 +5,7 @@
 html, body{
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #7951C8, #B862BD);
+  background: linear-gradient(45deg, #30d24e, #177a52);
 }
 
 .container {
@@ -59,14 +59,14 @@ html, body{
   font-size: 2rem;
   line-height: 2rem;
   color: white;
-  background-color: #C963BF;
+  background-color: #177a52;
   border: none;
 }
 
 .inp-box > div > .inp-select {
   width: 5rem;
   height: 2.5rem;
-  color: #7951C8;
+  color: #177a52;
   border: none;
 }
 

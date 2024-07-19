@@ -107,3 +107,33 @@ function getLocalStorage() {
 }
 
 window.addEventListener("load", getLocalStorage)
+
+const inpSelect = document.querySelector(".inp-select")
+
+inpSelect.addEventListener("change", (event) => {
+  let option = event.target.value
+  if (option === '전체') {
+    console.log(option)
+    todoArr = todoArr.filter((todo) => {
+      if (todo.todoDone === true || todo.todoDone === false) {
+        return todo
+      }
+    })
+    console.log(todoArr)
+  } else if (option === '완료') {
+    console.log(option)
+    todoArr = todoArr.filter((todo) => {
+      if (todo.todoDone === true) {
+        return todo
+      }
+    })
+  } else if (option === '미완료') {
+    console.log(option)
+    todoArr = todoArr.filter((todo) => {
+      if (todo.todoDone === false) {
+        return todo
+      }
+    })
+  }
+  displayTodos()
+})
