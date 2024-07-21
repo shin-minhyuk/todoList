@@ -1,0 +1,274 @@
+* {
+  box-sizing: border-box;
+}
+
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  width: 428px;
+  height: 926px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid #999999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #E9E9E9;
+  
+  overflow: hidden;
+}
+
+header .profile-box {
+  position: relative;
+  width: 100%;
+  height: 320px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: #6EA9AA;
+  border-radius: 20px;
+}
+
+header .gnb {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+}
+
+header .circle1 {
+  position: absolute;
+  top: -5rem;
+  left: -2rem;
+  width: 12rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: #88e2d3;
+  opacity: 0.5;
+
+}
+
+header .circle2 {
+  position: absolute;
+  top: 1rem;
+  left: -7rem;
+  width: 12rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: #88e2d3;
+  opacity: 0.5;
+}
+
+header .profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+header .profile-img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background-color: #bbb;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+}
+
+header .profile-name {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+main {
+  height: 100%;
+}
+
+main .todo-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+main .title {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #6EA9AA;
+}
+
+main .todo-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+}
+
+main .todo-item {
+  width: 11rem;
+  height: 7rem;
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  color: #123B3D;
+}
+
+main .todo-item:hover {
+  border: 1px solid #316664;
+}
+
+main .todo-item p {
+  margin-top: 1rem;
+}
+
+main .fab {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  font-size: 2.5rem;
+  padding-top: 0.375rem;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);;
+  color: #316664;
+  cursor: pointer;
+}
+
+/* hiddne */
+main .fab-inner {
+  display: none;
+  position: absolute;
+  right: 0.375rem;
+  bottom: 3rem;
+}
+
+main .fab-inner-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: #123B3D;
+}
+
+main .fab-inner button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #123B3D;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.popup .content {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+  /* height: 26rem; */
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -46%);
+  background-color: #fff;
+  border-radius: 0.5rem;
+
+}
+
+.popup header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 1.5rem;
+}
+
+.popup header p {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.popup header span {
+  color: #999;
+  cursor: pointer;
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem 2rem;
+  gap: 1rem;
+}
+
+.popup .todo-time, .popup .todo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup form input {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #bbbbbb;
+  border-radius: 0.25rem;
+}
+
+.popup form input:focus {
+  outline: 1px solid #316664;
+}
+
+.popup button {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid #bbbbbb;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #316664;
+  color: #fff;
+}
+
+
+
+
