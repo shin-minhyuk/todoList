@@ -45,6 +45,16 @@ document.addEventListener("click", (event) => {
   }
 })
 
+function gnbTime() {
+  const gnbTime = document.querySelector(".gnb")
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  gnbTime.textContent = `${h}:${m}`
+}
+setInterval(gnbTime, 1000);
+gnbTime();
+
 function changeItem(todoItem) {
   // 1. popup display:block; 
   // 2. 객체값 기반 todoItem.time, todoItem.text 출력
@@ -75,10 +85,12 @@ function changeItem(todoItem) {
   
         submitBtn.removeEventListener("click", updateTodo)
         submitBtn.addEventListener("click", addTodo)
+        setLocalstorage()
       } else {
         alert ("내용을 작성하세요.")
       }
     })
+
   }
 
   // todoArr.forEach((todo, todoIndex) => {
@@ -156,6 +168,7 @@ function displayTodos(todos) {
     `
     todoList.append(todoLi)
   })
+  setLocalstorage()
 }
 
 function addTodo() {
