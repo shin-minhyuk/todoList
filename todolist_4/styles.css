@@ -212,7 +212,7 @@ main .fab {
 
 /* hiddne */
 main .fab-inner {
-  /* display: none; */
+  display: none;
   position: absolute;
   right: 0.375rem;
   bottom: 3rem;
