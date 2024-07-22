@@ -18,18 +18,18 @@
         <div class="content">
           <header>
             <p>오늘의 할일 추가</p>
-            <span class="material-symbols-outlined">close</span>
+            <span class="material-symbols-outlined close">close</span>
           </header>
           <form action="#">
             <div class="todo-time">
-              <label for="">시간</label>
-              <input type="text">
+              <label for="time">시간</label>
+              <input type="text" id="time" autocomplete="off">
             </div>
             <div class="todo-text">
-              <label for="">할일</label>
-              <input type="text">
+              <label for="text">할일</label>
+              <input type="text" id="text" autocomplete="off">
             </div>
-            <button>할일 추가하기</button>
+            <button class="submit">할일 추가하기</button>
           </form>
         </div>
       </div>
@@ -56,33 +56,22 @@
           <!-- 투두리스트 -->
           <ul class="todo-list">
             <li class="todo-item">
-              <span>오후 12시 30분</span>
-              <p>그룹 미팅</p>
-            </li>
-
-            <li class="todo-item">
-              <span>오후 12시 30분</span>
-              <p>그룹 미팅</p>
-            </li>
-
-            <li class="todo-item">
-              <span>오후 12시 30분</span>
-              <p>그룹 미팅</p>
-            </li>
-
-            <li class="todo-item">
-              <span>오후 12시 30분</span>
-              <p>그룹 미팅</p>
-            </li>
-
-            <li class="todo-item">
-              <span>오후 12시 30분</span>
-              <p>그룹 미팅</p>
-            </li>
-
-            <li class="todo-item">
-              <span>오후 12시 30분</span>
-              <p>그룹 미팅</p>
+              <button class="menu-btn">
+                <span class="material-symbols-outlined">menu</span>
+              </button>
+              <div class="menu-box">
+                <div>
+                  <p class="change">수정하기</p>
+                  <p class="delete">삭제하기</p>
+                  <div class="menu-delbtn">
+                    <span class="material-symbols-outlined">close</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span>오후 12시 30분</span>
+                <p class="text-area">그룹 미팅</p>
+              </div>
             </li>
           </ul>
           <!-- floating action button -->
@@ -105,7 +94,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </main>
     </div>

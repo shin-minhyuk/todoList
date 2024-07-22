@@ -103,10 +103,12 @@ main {
 }
 
 main .todo-box {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 1.5rem;
+  padding: 1.5rem;
+  max-height: 604px;
 }
 
 main .title {
@@ -121,11 +123,19 @@ main .todo-list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
+  /* flex: 1; */
+  overflow: scroll;
 }
 
+main .todo-list::-webkit-scrollbar {
+  display: none;
+}
+
+
 main .todo-item {
-  width: 11rem;
+  position: relative;
+  width: 100%;
+  max-width: 11rem;
   height: 7rem;
   padding: 2rem 1rem;
   margin-bottom: 1.5rem;
@@ -133,18 +143,58 @@ main .todo-item {
   border-radius: 0.5rem;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   color: #123B3D;
+  border: 0.1px solid rgb(188, 188, 188)
 }
 
 main .todo-item:hover {
   border: 1px solid #316664;
 }
 
-main .todo-item p {
+main .todo-item button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  border: none;
+  background-color: transparent;
+  color: #999;
+}
+
+main .todo-item .menu-box {
+  display: none;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  width: 7rem;
+  background-color: #fff;
+  /* text-align: center; */
+  border-radius: 0.25rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+main .todo-item .menu-box p {
+  padding: 0.8rem;
+}
+
+main .todo-item .menu-box .change {
+  border-bottom: 1px solid #999;
+}
+
+main .todo-item .menu-box span {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  color: #999;
+}
+
+
+
+main .todo-item .text-area {
   margin-top: 1rem;
 }
 
 main .fab {
-  position: relative;
+  position: absolute;
+  bottom: 1.5rem;
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -162,7 +212,7 @@ main .fab {
 
 /* hiddne */
 main .fab-inner {
-  display: none;
+  /* display: none; */
   position: absolute;
   right: 0.375rem;
   bottom: 3rem;
