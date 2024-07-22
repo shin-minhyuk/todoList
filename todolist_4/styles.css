@@ -188,6 +188,8 @@ main .fab-inner button {
   border: none;
 }
 
+
+/* 팝업 */
 .popup {
   display: none;
   position: absolute;
@@ -268,7 +270,4 @@ main .fab-inner button {
   background-color: #316664;
   color: #fff;
 }
-
-
-
 
