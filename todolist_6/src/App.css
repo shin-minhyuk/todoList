@@ -6,10 +6,6 @@ html, body {
   width: 100%;
   height: 100%;
 
-}
-
-/* flex center center */
-html, body {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +18,10 @@ html, body {
   height: 600px;
 
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+  position: relative;
 }
 
 header > .headerTitle {
@@ -57,7 +57,7 @@ header > .headerTitle {
 
 .todoItem > .todoItemText {
   flex: 1;
-  padding: 1rem;
+  padding: 0 1rem;
 
   word-break: break-all;
   overflow-wrap: break-word;
@@ -96,3 +96,8 @@ header > .headerTitle {
   border-radius: 10px;
 }
 
+.gnbTime {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+}

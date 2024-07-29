@@ -3,21 +3,13 @@ import "./App.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
-  /**
-   * 1. 수정 버튼을 클릭한 경우에만 `input`이 보이도록 코드를 작성해보세요. 
-    2. 할일 완료상태를 체크할 수 있는 요소를 추가해보세요.
-    3. Todo 앱의 제목을 표시하는 헤더를 추가해보세요.
-    4. 작성된 Todo-App의 레이아웃을 정렬해보세요. (flex/grid 권장)
-    5. 수정/추가/삭제 버튼을 디자인 해보세요.
-    6. 자유롭게 적용해보고 싶은 CSS를 작성해보세요.
-   */
 
   return (
     <>
       <div className="container">
         <header>
+          <GnbTime />
           <h1 className="headerTitle">Todo List</h1>
-          {/* <GnbTime /> */}
         </header>
         <TodoList todoList={todoList} setTodoList={setTodoList} />
         <TodoInput todoList={todoList} setTodoList={setTodoList} />
@@ -27,18 +19,44 @@ function App() {
 }
 
 // function GnbTime() {
-//   const now = new Date();
-//   const h = String(now.getHours()).padStart(2, "0");
-//   const m = String(now.getMinutes()).padStart(2, "0");
+//   const [time, setTime] = useState("");
 
-//   return (
-//     <div>
-//       {h}:{m}
-//     </div>
-//   );
+//   useEffect(() => {
+//     const setIntervalId = setInterval(() => {
+//       setTime(() => {
+//         const now = new Date();
+//         const h = String(now.getHours()).padStart(2, "0");
+//         const m = String(now.getMinutes()).padStart(2, "0");
+
+//         return (
+//           <span className="gnbTIme">
+//             {h}:{m}
+//           </span>
+//         );
+//       });
+//     }, 1000);
+
+//     return () => clearInterval(setIntervalId);
+//   }, [time]);
 // }
-// setInterval(gnbTime, 1000);
-// gnbTime();
+
+function GnbTime() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const setIntervalId = setInterval(() => {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, "0");
+      const m = String(now.getMinutes()).padStart(2, "0");
+
+      setTime(`${h}:${m}`);
+    }, 1000);
+
+    return () => clearInterval(setIntervalId);
+  }, []);
+
+  return <span className="gnbTime">{time}</span>;
+}
 
 function TodoInput({ todoList, setTodoList }) {
   const [inputValue, setInputValue] = useState("");
