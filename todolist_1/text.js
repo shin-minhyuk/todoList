@@ -42,17 +42,6 @@ function handleAddText(list) {  //
   // prepend -> 맨 앞에 추가된다. append와 같이 문자열,요소 추가가 가능하다.
   todoList.prepend(createLi)
   createLi.prepend(createBtn)
-  // createLi.prepend(createSpan)
-  
-  // listArr.forEach(function(list){
-  //   if (list.done === true) {
-  //     createLi.classList.remove("list-false")
-  //     createLi.classList.add("list-true")
-  //   } else {
-  //     createLi.classList.remove("list-true");
-  //     createLi.classList.add("list-false");
-  //   }
-  // })
 
   createLi.addEventListener("click", function(){
     listDone(list.id)
@@ -77,19 +66,7 @@ function handleAddText(list) {  //
     localStorage.setItem("투두리스트",listArrStrings)
 
     location.reload();
-    // const indexNum = listArr.findIndex((element) => {
-    //   // return을 하지 않으면 undefined가 반환됨.
-    //     return element.id === dataId
-    // })
-    // console.log(indexNum)
-
-    // listArr.splice(indexNum, 1)
-
-    // const listArrStrings = JSON.stringify(listArr)
-    // localStorage.setItem("투두리스트",listArrStrings)
-    // location.reload();
   })
-
 }
 
 

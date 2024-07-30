@@ -18,48 +18,18 @@ function App() {
   );
 }
 
-// function GnbTime() {
-//   const [time, setTime] = useState("");
-
-//   useEffect(() => {
-//     const setIntervalId = setInterval(() => {
-//       setTime(() => {
-//         const now = new Date();
-//         const h = String(now.getHours()).padStart(2, "0");
-//         const m = String(now.getMinutes()).padStart(2, "0");
-
-//         return (
-//           <span className="gnbTIme">
-//             {h}:{m}
-//           </span>
-//         );
-//       });
-//     }, 1000);
-
-//     return () => clearInterval(setIntervalId);
-//   }, [time]);
-// }
-
-function GnbTime() {
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    const setIntervalId = setInterval(() => {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2, "0");
-      const m = String(now.getMinutes()).padStart(2, "0");
-
-      setTime(`${h}:${m}`);
-    }, 1000);
-
-    return () => clearInterval(setIntervalId);
-  }, []);
-
-  return <span className="gnbTime">{time}</span>;
-}
-
 function TodoInput({ todoList, setTodoList }) {
   const [inputValue, setInputValue] = useState("");
+
+  // 데이터 객체
+  const newTodo = {
+    id: Number(new Date()),
+    content: inputValue,
+    // isDone: false,
+  };
+
+  // 새로운 배열에 값 추가
+  const newTodoList = [...todoList, newTodo];
 
   return (
     <div className="addBtnBox">
@@ -69,11 +39,6 @@ function TodoInput({ todoList, setTodoList }) {
       />
       <button
         onClick={() => {
-          const newTodo = {
-            id: Number(new Date()),
-            content: inputValue,
-          };
-          const newTodoList = [...todoList, newTodo];
           setTodoList(newTodoList);
           setInputValue("");
         }}
@@ -147,6 +112,24 @@ function Todo({ todo, setTodoList }) {
       </li>
     </>
   );
+}
+
+function GnbTime() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const setIntervalId = setInterval(() => {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, "0");
+      const m = String(now.getMinutes()).padStart(2, "0");
+
+      setTime(`${h}:${m}`);
+    }, 1000);
+
+    return () => clearInterval(setIntervalId);
+  }, []);
+
+  return <span className="gnbTime">{time}</span>;
 }
 
 export default App;
